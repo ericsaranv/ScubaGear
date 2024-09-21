@@ -1,0 +1,26 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo "Install dependencies"
+  displayName: 'Install Dependencies'
+
+- script: echo "Build the application"
+  displayName: 'Build Application'
+
+- script: echo "Run unit tests"
+  displayName: 'Run Tests'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'build_outputs'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
